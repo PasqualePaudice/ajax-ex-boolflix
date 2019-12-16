@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Boolflix</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js" charset="utf-8"></script>
+    </head>
+    <body>
+
+        <header>
+
+            <div class="logo">
+
+                <h1><strong>B</strong>OOLFLI</span><strong>X</strong> </h1>
+
+            </div>
+
+            <div class="cerca">
+
+                <input id="cerca-film" type="text" name=""  placeholder="Cerca film">
+                <button id="button-cerca-film" type="button" name="button"><i class="fas fa-search"></i></button>
+
+            </div>
+
+        </header>
+
+        <main>
+            <div class="container">
+
+
+            </div>
+
+        </main>
+
+
+
+
+
+        <script id="template-card" type="text/x-handlebars-template">
+
+            <div class="card">
+                <img src="{{ copertina }}" alt="">
+
+                <div class="overcard">
+
+
+                    </div>
+                    <div class="sezione">
+                        <div class="">
+                            <p>{{ titolo }}</p>
+                            <small>{{ titolo_originale }}</small>
+                            <span>Lingua: {{ lingua }}</span>
+                            <span>Voto: {{ voto }}</span>
+
+                        </div>
+
+                </div>
+
+            </div>
+
+
+
+
+        </script>
+
+
+
+
+    </body>
+</html>

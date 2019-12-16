@@ -1,0 +1,167 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+header{
+    height:80px;
+    width:100vw;
+    background: black;
+}
+
+.logo{
+    padding-left: 20px;
+    float: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo h1{
+    color: red;
+
+
+}
+
+.logo strong{
+    font-size:35px;
+}
+
+
+
+main{
+    min-height:calc(100vh - 80px);
+    width:100vw;
+    background: grey;
+}
+
+.cerca{
+    height: 100%;
+    float: right;
+    margin-right: 40px;
+    display: flex;
+    align-items: center;
+
+}
+
+#cerca-film{
+    height:20px;
+    margin-right: 10px;
+    border:1px solid grey;
+    background: black;
+    color: white;
+}
+
+#cerca-film:focus{
+    outline: none;
+}
+
+#button-cerca-film{
+    height: 20px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid grey;
+    background-color: black;
+}
+
+#button-cerca-film i {
+    color:grey;
+}
+
+
+
+.container{
+    padding-top: 20px;
+    width: 80%;
+    margin:auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card{
+    display: inline-block;
+    width: 232px;
+    height:400px;
+    background-color: black;
+    position: relative;
+    margin: 10px 5px;
+    display: flex;
+    align-items: center;
+}
+
+.card:hover{
+    cursor: pointer;
+}
+
+.card img{
+    width:100%;
+}
+
+.overcard{
+    background-color: black;
+    opacity:0;
+    height:100%;
+    width:100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.card:hover .overcard{
+    opacity:0.8;
+}
+
+
+
+.sezione{
+    padding-left: 20px;
+    padding-right: 20px;
+    height:100%;
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    opacity: 0;
+
+}
+
+.card:hover .sezione{
+    opacity: 1;
+}
+
+
+
+.sezione div{
+    padding-bottom: 20px;
+}
+
+
+
+.sezione p{
+    font-weight: bold;
+    color:white;
+}
+
+
+.sezione small{
+    margin-top: 0;
+
+    color: grey;
+    font-size: 12px;
+    font-style: italic;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.sezione span{
+
+    display: block;
+    color: white;
+    font-size: 14px;
+
+}
