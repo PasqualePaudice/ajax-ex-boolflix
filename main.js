@@ -83,13 +83,17 @@ function ricerca(){
 
 
 
-                        if (film_corrente.original_language == 'en') {
-                            film_corrente.original_language = '<img class="flag" src="flag-en.png" alt="">';
-                        }
+                         if (film_corrente.original_language == 'en' ||  film_corrente.original_language == 'it' || film_corrente.original_language == 'es'  ) {
+                            film_corrente.original_language = '<img class="flag" src="flag-'+ film_corrente.original_language +'.png" alt="">';
 
-                        if (film_corrente.original_language == 'it') {
-                            film_corrente.original_language = '<img class="flag" src="flag-it.png" alt="">';
-                        }
+                        };
+                        // }
+                        // if (film_corrente.original_language == 'it') {
+                        //     film_corrente.original_language = '<img class="flag" src="flag-it.png" alt="">';
+                        // }
+                        // if (film_corrente.original_language == 'es') {
+                        //     film_corrente.original_language = '<img class="flag" src="flag-es.png" alt="">';
+                        // }
 
 
 
