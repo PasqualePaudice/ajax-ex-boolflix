@@ -78,9 +78,7 @@ main{
     padding-top: 20px;
     width: 80%;
     margin:auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+
 }
 
 .card{
@@ -90,8 +88,7 @@ main{
     background-color: black;
     position: relative;
     margin: 10px 5px;
-    display: flex;
-    align-items: center;
+
 }
 
 .card:hover{
@@ -167,6 +164,8 @@ main{
 }
 
 .stelle{
+    font-style: italic;
+    color: white;
     margin-top: 20px;
 }
 
@@ -179,4 +178,25 @@ main{
     max-height:20px;
     position: relative;
     top: 5px;
+}
+
+
+
+.film , .serie{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-top: 30px;
+
+}
+
+
+#film , #serie {
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    position: absolute;
+    top: -20px;
+    left: 0;
 }

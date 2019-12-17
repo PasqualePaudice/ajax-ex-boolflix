@@ -1,8 +1,30 @@
 $(document).ready(function(){
 
 
+$('.film , .serie').hide();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 $('#cerca-film').keypress(function(event){
+
+
+
+
 
     if (event.which == 13) {
 
@@ -32,6 +54,8 @@ $('#button-cerca-film').click(ricerca);
 function ricerca(){
 
 
+    $('.film , .serie').show();
+
 
         var film_cercato = $('#cerca-film').val();
 
@@ -39,7 +63,7 @@ function ricerca(){
 
         if (film_cercato.length != 0) {
             $.ajax({
-                'url':'https://api.themoviedb.org/3/search/movie',
+                'url':'https://api.themoviedb.org/3/search/multi',
                 'data': {
                     'api_key':'f3534c353eab17db2456e44f0cf8e1b0',
                     'query':film_cercato,
@@ -47,6 +71,8 @@ function ricerca(){
                 },
                 'methods':'get',
                 'success':function(data){
+
+
                     $('.card').remove();
                     var template_card = $('#template-card').html();
                     var template_function = Handlebars.compile(template_card);
@@ -57,59 +83,88 @@ function ricerca(){
                     for (var i = 0; i < film.length; i++) {
 
 
+
+
                         var film_corrente=film[i];
 
-                        var stelle = Math.ceil(film_corrente.vote_average / 2);
 
-                        var votazione ='';
 
-                        console.log(stelle);
+                        var ha_la_classe = film_corrente.hasOwnProperty('known_for_department');
 
-                        for (var j = 0; j < stelle; j++) {
-                            votazione += '<i class="fas fa-star"></i>';
-                            console.log(votazione);
+                        if (ha_la_classe == false) {
+                            var stelle = Math.ceil(film_corrente.vote_average / 2);
+
+                            var votazione ='';
+
+                            console.log(stelle);
+
+                            for (var j = 0; j < stelle; j++) {
+                                votazione += '<i class="fas fa-star"></i>';
+                                console.log(votazione);
+                            };
+
+
+
+                            var stelle_vuote = 5 - stelle;
+                            var v = 0;
+                            while (v != stelle_vuote) {
+                                votazione += '<i class="far fa-star"></i>';
+                                v++;
+                            }
+
+
+
+                            var lingua = film_corrente.original_language;
+
+                             if (lingua == 'en' ||  lingua == 'it' || lingua == 'es' || lingua == 'cn' ) {
+                                lingua = '<img class="flag" src="flag-'+ lingua +'.png" alt="">';
+
+                            };
+                            // }
+                            // if (film_corrente.original_language == 'it') {
+                            //     film_corrente.original_language = '<img class="flag" src="flag-it.png" alt="">';
+                            // }
+                            // if (film_corrente.original_language == 'es') {
+                            //     film_corrente.original_language = '<img class="flag" src="flag-es.png" alt="">';
+                            // }
+
+
+                            var compilazione = {};
+                            if (film_corrente.media_type == 'movie') {
+                                compilazione = {
+
+                                    titolo : film_corrente.title,
+                                    titolo_originale : film_corrente.original_title,
+                                    lingua: lingua,
+                                    voto : film_corrente.vote_average,
+                                    copertina : 'https://image.tmdb.org/t/p/w500' + film_corrente.poster_path,
+                                    stelle : votazione,
+                                    tipo : 'Film'
+
+                                }
+                                $('.film').append(template_function(compilazione));
+                            }else{ if (film_corrente.media_type == 'tv') {
+                                compilazione = {
+
+                                    titolo : film_corrente.name,
+                                    titolo_originale : film_corrente.original_name,
+                                    lingua: lingua,
+                                    voto : film_corrente.vote_average,
+                                    copertina : 'https://image.tmdb.org/t/p/w500' + film_corrente.poster_path,
+                                    stelle : votazione,
+                                    tipo : 'Serie Tv'
+
+                                }
+                                $('.serie').append(template_function(compilazione));
+                            }
+
                         };
 
-
-
-                        var stelle_vuote = 5 - stelle;
-                        var v = 0;
-                        while (v != stelle_vuote) {
-                            votazione += '<i class="far fa-star"></i>';
-                            v++;
                         }
 
 
 
 
-
-                         if (film_corrente.original_language == 'en' ||  film_corrente.original_language == 'it' || film_corrente.original_language == 'es'  ) {
-                            film_corrente.original_language = '<img class="flag" src="flag-'+ film_corrente.original_language +'.png" alt="">';
-
-                        };
-                        // }
-                        // if (film_corrente.original_language == 'it') {
-                        //     film_corrente.original_language = '<img class="flag" src="flag-it.png" alt="">';
-                        // }
-                        // if (film_corrente.original_language == 'es') {
-                        //     film_corrente.original_language = '<img class="flag" src="flag-es.png" alt="">';
-                        // }
-
-
-
-
-                        var compilazione = {
-
-                            titolo : film_corrente.title,
-                            titolo_originale : film_corrente.original_title,
-                            lingua: film_corrente.original_language,
-                            voto : film_corrente.vote_average,
-                            copertina : 'https://image.tmdb.org/t/p/w500' + film_corrente.poster_path,
-                            stelle : votazione
-
-                        }
-
-                            $('.container').append(template_function(compilazione));
 
 
                     };
@@ -121,6 +176,8 @@ function ricerca(){
 
             });
         }
+
+
 
 
 

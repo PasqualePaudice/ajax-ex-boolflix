@@ -3,11 +3,16 @@
     <head>
         <meta charset="utf-8">
         <title>Boolflix</title>
+
+
+
+        <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="style.css">
         <script src="main.js" charset="utf-8"></script>
+
     </head>
     <body>
 
@@ -31,6 +36,15 @@
         <main>
             <div class="container">
 
+                <div class="film">
+                    <span id="film">Film</span>
+
+                </div>
+
+                <div class="serie">
+                    <span id="serie">Serie Tv</span>
+
+                </div>
 
             </div>
 
@@ -42,31 +56,37 @@
 
         <script id="template-card" type="text/x-handlebars-template">
 
-            <div class="card">
-                <img src="{{ copertina }}" alt="">
-
-                <div class="overcard">
 
 
-                    </div>
-                    <div class="sezione">
-                        <div class="">
-                            <p>{{ titolo }}</p>
-                            <small>{{ titolo_originale }}</small>
-                            <span>Lingua originale: {{{ lingua }}}</span>
-                            <span>Voto: {{ voto }}</span>
-                            <div class="stelle">{{{ stelle }}}</div>
+                <div class="card">
+                    <img src="{{ copertina }}" alt="">
+
+                    <div class="overcard">
+
 
                         </div>
+                        <div class="sezione">
+                            <div class="">
+                                <p>{{ titolo }}</p>
+                                <small>{{ titolo_originale }}</small>
+                                <span>Lingua originale: {{{ lingua }}}</span>
+                                <span>Voto: {{ voto }}</span>
+                                <div class="stelle">{{{ stelle }}} <span>{{ tipo }}</span></div>
+
+                            </div>
+
+                    </div>
 
                 </div>
-
-            </div>
 
 
 
 
         </script>
+
+
+
+
 
 
 
