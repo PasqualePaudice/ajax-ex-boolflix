@@ -165,3 +165,18 @@ main{
     font-size: 14px;
 
 }
+
+.stelle{
+    margin-top: 20px;
+}
+
+.fa-star {
+    color: white;
+}
+
+.flag{
+    max-width: 20px;
+    max-height:20px;
+    position: relative;
+    top: 5px;
+}
