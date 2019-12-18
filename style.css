@@ -114,6 +114,7 @@ main{
 
 
 .sezione{
+    padding-top:20px;
     padding-left: 20px;
     padding-right: 20px;
     height:100%;
@@ -121,7 +122,7 @@ main{
     position: absolute;
     bottom: 0;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     opacity: 0;
 
 }
@@ -201,9 +202,9 @@ main{
 }
 
 #descrizione{
-
-    height: 50px;
+    max-height: 140px;
     overflow-y: scroll;
+    color:grey;
 
 
 }
@@ -214,10 +215,11 @@ main{
     background: black;
     margin-right: 10px;
 
+
 }
 
 #descrizione::-webkit-scrollbar:hover{
-    background-color:# eaeaea ;
+
     border: none;
 }
 #descrizione::-webkit-resizer{
@@ -226,9 +228,9 @@ main{
     border: none;
 }
 #descrizione::-webkit-scrollbar-thumb{
-    height:0.8em;
-    width:0.8em;
-    -webkit-border-radius:100%;
+    min-height:0.8em;
+    min-width:0.8em;
+    -webkit-border-radius:4px;
     background-color: grey;
     border: none;
 }

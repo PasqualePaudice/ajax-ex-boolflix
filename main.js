@@ -188,7 +188,7 @@ function sceltaBandiera(lingua){
      if (lingua == 'en' ||  lingua == 'it' || lingua == 'es' || lingua == 'cn' ) {
         lingua = '<img class="flag" src="flag-'+ lingua +'.png" alt="">';
 
-    };
+    }
 
     return lingua;
 }
