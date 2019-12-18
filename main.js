@@ -87,46 +87,17 @@ function ricerca(){
 
                         var film_corrente=film[i];
 
-
+                        var voto = film_corrente.vote_average;
 
                         var ha_la_classe = film_corrente.hasOwnProperty('known_for_department');
 
                         if (ha_la_classe == false) {
-                            var stelle = Math.ceil(film_corrente.vote_average / 2);
-
-                            var votazione ='';
-
-                            console.log(stelle);
-
-                            for (var j = 0; j < stelle; j++) {
-                                votazione += '<i class="fas fa-star"></i>';
-                                console.log(votazione);
-                            };
 
 
+                            var votazione = stelle(voto);
 
-                            var stelle_vuote = 5 - stelle;
-                            var v = 0;
-                            while (v != stelle_vuote) {
-                                votazione += '<i class="far fa-star"></i>';
-                                v++;
-                            }
+                            var lingua = sceltaBandiera(film_corrente.original_language);
 
-
-
-                            var lingua = film_corrente.original_language;
-
-                             if (lingua == 'en' ||  lingua == 'it' || lingua == 'es' || lingua == 'cn' ) {
-                                lingua = '<img class="flag" src="flag-'+ lingua +'.png" alt="">';
-
-                            };
-                            // }
-                            // if (film_corrente.original_language == 'it') {
-                            //     film_corrente.original_language = '<img class="flag" src="flag-it.png" alt="">';
-                            // }
-                            // if (film_corrente.original_language == 'es') {
-                            //     film_corrente.original_language = '<img class="flag" src="flag-es.png" alt="">';
-                            // }
 
 
                             var compilazione = {};
@@ -137,9 +108,10 @@ function ricerca(){
                                     titolo_originale : film_corrente.original_title,
                                     lingua: lingua,
                                     voto : film_corrente.vote_average,
-                                    copertina : 'https://image.tmdb.org/t/p/w500' + film_corrente.poster_path,
+                                    copertina : 'https://image.tmdb.org/t/p/w342' + film_corrente.poster_path,
                                     stelle : votazione,
-                                    tipo : 'Film'
+                                    tipo : 'Film',
+                                    descrizione : film_corrente.overview
 
                                 }
                                 $('.film').append(template_function(compilazione));
@@ -150,9 +122,10 @@ function ricerca(){
                                     titolo_originale : film_corrente.original_name,
                                     lingua: lingua,
                                     voto : film_corrente.vote_average,
-                                    copertina : 'https://image.tmdb.org/t/p/w500' + film_corrente.poster_path,
+                                    copertina : 'https://image.tmdb.org/t/p/w342' + film_corrente.poster_path,
                                     stelle : votazione,
-                                    tipo : 'Serie Tv'
+                                    tipo : 'Serie Tv',
+                                    descrizione : film_corrente.overview
 
                                 }
                                 $('.serie').append(template_function(compilazione));
@@ -183,3 +156,39 @@ function ricerca(){
 
 
 };
+
+function stelle(voto){
+    var stelle = Math.ceil(voto / 2);
+
+    var votazione ='';
+
+    console.log(stelle);
+
+    for (var j = 0; j < stelle; j++) {
+        votazione += '<i class="fas fa-star"></i>';
+        console.log(votazione);
+    };
+
+
+
+    var stelle_vuote = 5 - stelle;
+    var v = 0;
+    while (v != stelle_vuote) {
+        votazione += '<i class="far fa-star"></i>';
+        v++;
+    }
+
+    return votazione;
+}
+
+
+function sceltaBandiera(lingua){
+
+
+     if (lingua == 'en' ||  lingua == 'it' || lingua == 'es' || lingua == 'cn' ) {
+        lingua = '<img class="flag" src="flag-'+ lingua +'.png" alt="">';
+
+    };
+
+    return lingua;
+}

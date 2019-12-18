@@ -84,7 +84,6 @@ main{
 .card{
     display: inline-block;
     width: 232px;
-    height:400px;
     background-color: black;
     position: relative;
     margin: 10px 5px;
@@ -199,4 +198,45 @@ main{
     position: absolute;
     top: -20px;
     left: 0;
+}
+
+#descrizione{
+
+    height: 50px;
+    overflow-y: scroll;
+
+
+}
+
+#descrizione::-webkit-scrollbar{
+    width:0.8em;
+    height:0.8em;
+    background: black;
+    margin-right: 10px;
+
+}
+
+#descrizione::-webkit-scrollbar:hover{
+    background-color:# eaeaea ;
+    border: none;
+}
+#descrizione::-webkit-resizer{
+    -webkit-border-radius:4px;
+    background-color:#ccc;
+    border: none;
+}
+#descrizione::-webkit-scrollbar-thumb{
+    height:0.8em;
+    width:0.8em;
+    -webkit-border-radius:100%;
+    background-color: grey;
+    border: none;
+}
+#descrizione::-webkit-scrollbar-thumb:hover{
+    background-color: #D80067;
+    border: none;
+}
+#descrizione::-webkit-scrollbar-thumb:active{
+    background-color:#990754;
+    border: none;
 }
