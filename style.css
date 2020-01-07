@@ -142,6 +142,7 @@ main{
 .sezione p{
     font-weight: bold;
     color:white;
+    overflow-y: hidden;
 }
 
 
@@ -202,7 +203,7 @@ main{
 }
 
 #descrizione{
-    max-height: 140px;
+    max-height: 100px;
     overflow-y: scroll;
     color:grey;
 
@@ -241,4 +242,14 @@ main{
 #descrizione::-webkit-scrollbar-thumb:active{
     background-color:#990754;
     border: none;
+}
+
+.lingua{
+    width: 50px;
+    background-color: black;
+    border-color: grey;
+    color: grey;
+    outline: none;
+    margin-left: 20px;
+
 }

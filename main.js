@@ -47,11 +47,28 @@ $('#button-cerca-film').click(ricerca);
 
 
 
+
+
 });
 
 
 
 function ricerca(){
+
+
+        var lang = $('.lingua').val();
+
+        console.log(lang);
+
+
+
+
+
+
+
+
+
+
 
 
     $('.film , .serie').show();
@@ -61,13 +78,15 @@ function ricerca(){
 
          $('#cerca-film').val('');
 
+
+
         if (film_cercato.length != 0) {
             $.ajax({
                 'url':'https://api.themoviedb.org/3/search/multi',
                 'data': {
                     'api_key':'f3534c353eab17db2456e44f0cf8e1b0',
                     'query':film_cercato,
-                    'language':'it-IT'
+                    'language':lang
                 },
                 'methods':'get',
                 'success':function(data){
@@ -101,6 +120,10 @@ function ricerca(){
 
 
                             var compilazione = {};
+
+
+
+
                             if (film_corrente.media_type == 'movie') {
                                 compilazione = {
 
