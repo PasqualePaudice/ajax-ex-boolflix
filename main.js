@@ -81,6 +81,9 @@ function ricerca(){
 
 
         if (film_cercato.length != 0) {
+
+
+
             $.ajax({
                 'url':'https://api.themoviedb.org/3/search/multi',
                 'data': {
@@ -92,6 +95,10 @@ function ricerca(){
                 'success':function(data){
 
 
+
+
+
+                    
                     $('.card').remove();
                     var template_card = $('#template-card').html();
                     var template_function = Handlebars.compile(template_card);
