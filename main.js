@@ -1,9 +1,47 @@
 $(document).ready(function(){
 
-
+    var id_generi =[];
 $('.film , .serie').hide();
 
+var lang = $('.lingua').val();
 
+console.log(lang);
+
+
+$.ajax({
+    'url':'https://api.themoviedb.org/3/genre/movie/list',
+    'data': {
+        'api_key':'f3534c353eab17db2456e44f0cf8e1b0',
+        'language': lang
+    },
+    'methods':'get',
+    'success':function(data){
+        console.log('GENERI');
+
+        var genere = data.genres;
+
+        console.log(genere);
+
+
+
+
+
+
+        id_generi = genere;
+
+        console.log(id_generi);
+
+
+
+
+        console.log('FINE GENERI');
+
+
+    },
+    'error':function(){
+        console.log('errore');
+    }
+});
 
 
 
@@ -39,26 +77,17 @@ $('#button-cerca-film').click(ricerca);
 
 
 
-
-
-
-
-
-
-
-
-
-
-});
-
-
-
 function ricerca(){
 
 
         var lang = $('.lingua').val();
 
         console.log(lang);
+
+
+
+
+
 
 
 
@@ -80,6 +109,8 @@ function ricerca(){
 
 
 
+
+
         if (film_cercato.length != 0) {
 
 
@@ -98,7 +129,6 @@ function ricerca(){
 
 
 
-                    
                     $('.card').remove();
                     var template_card = $('#template-card').html();
                     var template_function = Handlebars.compile(template_card);
@@ -124,6 +154,15 @@ function ricerca(){
 
                             var lingua = sceltaBandiera(film_corrente.original_language);
 
+                            var genere = film_corrente.genre_ids;
+
+                            console.log(genere);
+
+                            genere = generiFilm(genere);
+
+
+
+
 
 
                             var compilazione = {};
@@ -132,11 +171,15 @@ function ricerca(){
 
 
                             if (film_corrente.media_type == 'movie') {
+
+
+
                                 compilazione = {
 
                                     titolo : film_corrente.title,
                                     titolo_originale : film_corrente.original_title,
                                     lingua: lingua,
+                                    generi: genere,
                                     voto : film_corrente.vote_average,
                                     copertina : 'https://image.tmdb.org/t/p/w342' + film_corrente.poster_path,
                                     stelle : votazione,
@@ -187,16 +230,50 @@ function ricerca(){
 
 };
 
+function generiFilm(genere){
+    var generi = '';
+
+    console.log('ihrighfiueqrhngvf');
+
+    console.log(id_generi);
+
+    for (var i = 0; i < genere.length; i++) {
+
+        for (var j = 0; j < id_generi.length; j++) {
+
+            if (genere[i] == id_generi[j].id) {
+
+                generi += id_generi[j].name + ' ';
+                console.log(generi);
+
+            }
+
+
+        }
+    }
+    return generi;
+}
+
+
+});
+
+
+
+
+
+
+
+
 function stelle(voto){
     var stelle = Math.ceil(voto / 2);
 
     var votazione ='';
 
-    console.log(stelle);
+
 
     for (var j = 0; j < stelle; j++) {
         votazione += '<i class="fas fa-star"></i>';
-        console.log(votazione);
+
     };
 
 
